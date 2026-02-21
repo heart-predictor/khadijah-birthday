@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Secret For Khadijah ❤️</title>
+
+<style>
+body{
+    margin:0;
+    padding:0;
+    min-height:100vh;
+    font-family:'Segoe UI',sans-serif;
+    color:white;
+    overflow:hidden;
+    text-align:center;
+    background:linear-gradient(-45deg,#ff758c,#ff7eb3,#ff4e50,#ff6a88);
+    background-size:400% 400%;
+    animation:gradientBG 12s ease infinite;
+}
+
+@keyframes gradientBG{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+
+.screen{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+    transition:opacity 0.8s ease;
+}
+
+.hidden{
+    opacity:0;
+    pointer-events:none;
+}
+
+h1{ font-size:26px; }
+
+p{
+    font-size:17px;
+    max-width:600px;
+    line-height:1.7;
+}
+
+button{
+    margin-top:20px;
+    padding:12px 28px;
+    font-size:15px;
+    border:none;
+    border-radius:30px;
+    cursor:pointer;
+    background:white;
+    color:#ff4e50;
+    font-weight:bold;
+    transition:0.3s;
+}
+
+button:hover{
+    transform:scale(1.1);
+}
+
+input{
+    padding:10px;
+    border-radius:20px;
+    border:none;
+    text-align:center;
+    font-size:16px;
+}
+
+#noBtn{
+    position:absolute;
+}
+
+/* DAMBO Animation */
+.dambo{
+    font-size:36px;
+    font-weight:bold;
+    color:white;
+    animation:pulse 1.2s infinite alternate;
+}
+
+@keyframes pulse{
+    from{transform:scale(1);}
+    to{transform:scale(1.2);}
+}
+
+/* Floating Hearts */
+.heart{
+    position:absolute;
+    font-size:24px;
+    animation:float 4s linear infinite;
+}
+
+@keyframes float{
+    0%{transform:translateY(100vh); opacity:1;}
+    100%{transform:translateY(-10vh); opacity:0;}
+}
+
+/* Mobile Optimization */
+@media(max-width:480px){
+    h1{font-size:22px;}
+    p{font-size:15px;}
+    button{font-size:14px;}
+}
+</style>
+</head>
+
+<body>
+
+<audio id="bgMusic" loop>
+    <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<!-- PASSWORD SCREEN -->
+<div class="screen" id="lockScreen">
+    <h1>🔐 Enter The Secret Code</h1>
+    <p>Only someone special knows this… 😌</p>
+    <input type="password" id="password" placeholder="Enter password">
+    <button onclick="checkPassword()">Unlock ❤️</button>
+    <p id="error" style="color:red;"></p>
+</div>
+
+<!-- SCREEN 1 -->
+<div class="screen hidden" id="screen1">
+    <h1>🎉 Happy Birthday Khadijah Khaliq 🎉</h1>
+    <p>Today the world celebrates someone truly special ❤️</p>
+    <button onclick="nextScreen(1)">Next ➜</button>
+</div>
+
+<!-- SCREEN 2 -->
+<div class="screen hidden" id="screen2">
+    <p id="typedText"></p>
+    <button onclick="nextScreen(2)">Next ➜</button>
+</div>
+
+<!-- SCREEN 3 -->
+<div class="screen hidden" id="screen3">
+    <h1>My Love ❤️</h1>
+    <p>Will You Always Be Mine…<br>
+    or Can I Always Be Yours? 🥺</p>
+
+    <button onclick="yesClicked()">YES ❤️</button>
+    <button id="noBtn" onmouseover="moveNo()">NO 😏</button>
+</div>
+
+<script>
+
+/* PASSWORD */
+function checkPassword(){
+    const correctPassword="2202";
+    const input=document.getElementById("password").value;
+
+    if(input===correctPassword){
+        document.getElementById("lockScreen").classList.add("hidden");
+        document.getElementById("screen1").classList.remove("hidden");
+        document.getElementById("bgMusic").play().catch(()=>{});
+    }else{
+        document.getElementById("error").innerText="Wrong password 😏 Try again";
+    }
+}
+
+/* SCREEN SWITCH */
+function nextScreen(num){
+    document.getElementById("screen"+num).classList.add("hidden");
+    const next=document.getElementById("screen"+(num+1));
+    next.classList.remove("hidden");
+
+    if(num===1){
+        startTyping();
+    }
+}
+
+/* TYPING EFFECT */
+function startTyping(){
+    const text=`Khadijah Khaliq aka 
+DAMBOOOO ❤️
+
+HAPPPYYYYY BIRTHDAYYYYY MERIIIII JAAANNNN ❤️
+
+Congratulations 🎉 you’re officially an adult now.
+May Allah bless you with happiness and success.
+
+Aaj thoda senti hu…
+Ignore karne ka plan tha 12 tak 😏
+Risk liya… darr bhi tha block na kar do 😭
+
+Zyada mehnat nahi ki…
+Par dil pura laga diya ❤️
+
+I LOVE YOU KHADIJAH KHALIQ AKA DAMBOOOO 😌
+
+Madam ji… now click next…`;
+
+    const element=document.getElementById("typedText");
+    let i=0;
+    element.innerHTML="";
+
+    function typing(){
+        if(i<text.length){
+            element.innerHTML+=text.charAt(i);
+            i++;
+            setTimeout(typing,30);
+        }
+    }
+    typing();
+}
+
+/* FAST NO BUTTON */
+function moveNo(){
+    const btn=document.getElementById("noBtn");
+    const x=Math.random()*(window.innerWidth-120);
+    const y=Math.random()*(window.innerHeight-60);
+    btn.style.left=x+"px";
+    btn.style.top=y+"px";
+}
+
+/* YES CELEBRATION */
+function yesClicked(){
+    document.body.innerHTML=`
+    <div class="screen">
+        <h1>She Said YESSSS ❤️😭🔥</h1>
+        <p>Forever yours… no escape now 😌💍</p>
+    </div>`;
+    startHeartsExplosion();
+}
+
+/* HEART EXPLOSION */
+function startHeartsExplosion(){
+    setInterval(()=>{
+        const heart=document.createElement("div");
+        heart.className="heart";
+        heart.innerHTML="❤️";
+        heart.style.left=Math.random()*100+"vw";
+        document.body.appendChild(heart);
+        setTimeout(()=>heart.remove(),4000);
+    },150);
+}
+
+</script>
+
+</body>
+</html>
