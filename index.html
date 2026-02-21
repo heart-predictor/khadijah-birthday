@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Khadijah ❤️</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
+
+body{
+height:100vh;
+overflow:hidden;
+background:radial-gradient(circle at bottom,#1b2735 0%,#090a0f 100%);
+color:white;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+}
+
+/* Stars */
+.stars{
+position:absolute;
+width:100%;
+height:100%;
+background:transparent;
+overflow:hidden;
+}
+
+.star{
+position:absolute;
+width:2px;
+height:2px;
+background:white;
+animation:twinkle 2s infinite alternate;
+}
+
+@keyframes twinkle{
+from{opacity:0.2;}
+to{opacity:1;}
+}
+
+/* Hearts */
+.heart{
+position:absolute;
+bottom:-20px;
+font-size:20px;
+animation:floatUp 6s linear infinite;
+}
+
+@keyframes floatUp{
+0%{transform:translateY(0);opacity:1;}
+100%{transform:translateY(-110vh);opacity:0;}
+}
+
+/* Fireworks */
+.firework{
+position:absolute;
+width:6px;
+height:6px;
+background:gold;
+border-radius:50%;
+animation:explode 1s ease-out forwards;
+}
+
+@keyframes explode{
+0%{transform:scale(1);}
+100%{transform:scale(15);opacity:0;}
+}
+
+#startScreen{
+position:absolute;
+}
+
+button{
+padding:15px 30px;
+border:none;
+border-radius:40px;
+background:white;
+color:#ff4e50;
+font-size:18px;
+cursor:pointer;
+}
+
+#content{
+display:none;
+padding:20px;
+}
+
+h1{
+font-size:2.5rem;
+margin-bottom:20px;
+}
+
+#message{
+font-size:1.3rem;
+min-height:100px;
+}
+
+#final{
+display:none;
+font-size:2rem;
+margin-top:30px;
+animation:fadeIn 2s ease forwards;
+}
+
+@keyframes fadeIn{
+from{opacity:0;}
+to{opacity:1;}
+}
+</style>
+</head>
+<body>
+
+<div class="stars" id="stars"></div>
+
+<div id="startScreen">
+<h2>Tap to Begin Something Special ✨</h2><br>
+<button onclick="start()">Begin ❤️</button>
+</div>
+
+<div id="content">
+<h1>Happy Birthday My Love ❤️</h1>
+<p id="message"></p>
+<div id="final">Will you always be mine? 💍❤️</div>
+</div>
+
+<audio id="bgMusic" loop>
+<source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+
+// Create Stars
+for(let i=0;i<150;i++){
+let star=document.createElement("div");
+star.className="star";
+star.style.top=Math.random()*100+"%";
+star.style.left=Math.random()*100+"%";
+star.style.animationDuration=(Math.random()*3+1)+"s";
+document.getElementById("stars").appendChild(star);
+}
+
+const text="From the moment you walked into my life, you became my light in the darkest nights. You are my happiness, my peace, my forever. On your birthday, I promise to love you deeper every single day... ❤️";
+
+let index=0;
+
+function typeWriter(){
+if(index<text.length){
+document.getElementById("message").innerHTML+=text.charAt(index);
+index++;
+setTimeout(typeWriter,40);
+}else{
+setTimeout(showFinal,2000);
+}
+}
+
+function createHearts(){
+setInterval(()=>{
+let heart=document.createElement("div");
+heart.className="heart";
+heart.innerHTML="❤️";
+heart.style.left=Math.random()*100+"vw";
+heart.style.fontSize=(Math.random()*20+15)+"px";
+document.body.appendChild(heart);
+setTimeout(()=>heart.remove(),6000);
+},600);
+}
+
+function fireworks(){
+for(let i=0;i<20;i++){
+let fw=document.createElement("div");
+fw.className="firework";
+fw.style.top=Math.random()*80+"%";
+fw.style.left=Math.random()*100+"%";
+document.body.appendChild(fw);
+setTimeout(()=>fw.remove(),1000);
+}
+}
+
+function showFinal(){
+fireworks();
+document.getElementById("final").style.display="block";
+}
+
+function start(){
+document.getElementById("startScreen").style.display="none";
+document.getElementById("content").style.display="block";
+document.getElementById("bgMusic").play();
+typeWriter();
+createHearts();
+}
+</script>
+
+</body>
+</html>
